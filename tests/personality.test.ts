@@ -5,6 +5,7 @@ import Effect from '@civ-clone/core-rule/Effect';
 import Expansion from '../Rules/Player/Expansion';
 import Leader from '@civ-clone/core-civilization/Leader';
 import Player from '@civ-clone/core-player/Player';
+import PollutionConcern from '../Rules/Player/PollutionConcern';
 import RuleRegistry from '@civ-clone/core-rule/RuleRegistry';
 import ScienceBias from '../Rules/Player/ScienceBias';
 import Trait from '@civ-clone/core-civilization/Trait';
@@ -112,6 +113,14 @@ describe('combining traits', (): void => {
       new ScienceBias(leaderHas(traitRegistry, Studious), new Effect(() => 2)),
       new Expansion(leaderHas(traitRegistry, Bold), new Effect(() => 1.5)),
       new Expansion(leaderHas(traitRegistry, Studious), new Effect(() => 2)),
+      new PollutionConcern(
+        leaderHas(traitRegistry, Bold),
+        new Effect(() => 0.75)
+      ),
+      new PollutionConcern(
+        leaderHas(traitRegistry, Studious),
+        new Effect(() => 1.5)
+      ),
       new WantedAdvances(new Effect(() => [Writing])),
       new WantedAdvances(
         leaderHas(traitRegistry, Studious),
@@ -122,6 +131,8 @@ describe('combining traits', (): void => {
     expect(sum(ruleRegistry, ScienceBias, bold)).equal(1);
     expect(sum(ruleRegistry, ScienceBias, studious)).equal(2);
     expect(product(ruleRegistry, Expansion, bold)).equal(3);
+    expect(product(ruleRegistry, PollutionConcern, bold)).equal(1.125);
+    expect(product(ruleRegistry, PollutionConcern, studious)).equal(1.5);
     expect(union(ruleRegistry, WantedAdvances, studious)).members([
       Writing,
       Wheel,
