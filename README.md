@@ -16,6 +16,7 @@ only its own rules, and no change to the AI.
 | `BuildWeight`                  | `Player`, item           | `product` | 1             |
 | `Expansion`                    | `Player`                 | `product` | 1             |
 | `MilitaryUnhappinessTolerance` | `Player`                 | `sum`     | 0             |
+| `OverseasSettlers`             | `Player`                 | `sum`     | 0             |
 | `PollutionConcern`             | `Player`                 | `product` | 1             |
 | `ScienceBias`                  | `Player`                 | `sum`     | 0             |
 | `WantedAdvances`               | `Player`                 | `union`   | `null`        |
