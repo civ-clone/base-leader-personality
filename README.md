@@ -11,6 +11,7 @@ only its own rules, and no change to the AI.
 | Rule                           | Arguments                | Combines  | With no match |
 | ------------------------------ | ------------------------ | --------- | ------------- |
 | `AdvanceGrade`                 | `Player`, advance        | `sum`     | 0             |
+| `ArmySize`                     | `Player`, rival or null  | `product` | 1             |
 | `AttackConfidence`             | `Player`, other `Player` | `product` | 1             |
 | `BuildWeight`                  | `Player`, item           | `product` | 1             |
 | `Expansion`                    | `Player`                 | `product` | 1             |
